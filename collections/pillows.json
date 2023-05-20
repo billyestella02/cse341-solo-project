@@ -1,0 +1,29 @@
+[
+    {
+        "title": "Premium Goose Down Pillow",
+        "type": "down",
+        "size": "queen",
+        "color": "lilac dreamer",
+        "price": 800.00,
+        "description": "This is a luxurious and ultra-soft material from duck and goose underbellies.",
+        "numInStock": 100
+    },
+    {
+        "title": "Gel Memory Foam Pillow",
+        "type": "memory foam",
+        "size": "super standard",
+        "color": "white",
+        "price": 1499.00,
+        "description": "This is pain-relieving and contours well to your head and neck. The material responds to your movement quickly and cradles your curves.",
+        "numInStock": 50
+    },
+    {
+        "title": "Microbead Roll Pillow",
+        "type": "micro bead",
+        "size": "standard",
+        "color": "ash gray",
+        "price": 999.00,
+        "description": "Microbeads, also known as unexpanded polystyrene beads (EPS) are a squishy, contouring pillow fill.",
+        "numInStock": 125
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "firstName": "Billy",
+        "lastName": "Estella",
+        "username": "billythegreat",
+        "email": "billyestella@email.com",
+        "birthday": "03/02/1990"
+    },
+    {
+        "firstName": "Light",
+        "lastName": "Yagami",
+        "username": "iamkira",
+        "email": "lightyagami@email.com",
+        "birthday": "02/28/1986"
+    },
+    {
+        "firstName": "Senku",
+        "lastName": "Ishigami",
+        "username": "tenbillionpercent",
+        "email": "drstone@email.com",
+        "birthday": "01-04-2004"
+    }
+]

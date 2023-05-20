@@ -1,0 +1,20 @@
+// LOCALHOST
+GET http://localhost/8080/pillows
+###
+GET http://localhost/8080/pillows/6468e61237e6da8ae00dffed
+###
+POST http://localhost/8080/pillows
+###
+PUT http://localhost/8080/pillows/6468e61237e6da8ae00dffed
+###
+DELETE http://localhost/8080/pillows/6468e61237e6da8ae00dffed
+###
+GET http://localhost/8080/users
+###
+GET http://localhost/8080/users/6468e66637e6da8ae00dfff0
+###
+POST http://localhost/8080/users
+###
+PUT http://localhost/8080/users/6468e66637e6da8ae00dfff0
+###
+DELETE http://localhost/8080/users/6468e66637e6da8ae00dfff0
