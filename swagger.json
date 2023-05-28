@@ -5,7 +5,7 @@
     "description": "API for my Pillow Shop Project",
     "version": "1.0.0"
   },
-  "host": "cse341-lesson05-project.onrender.com",
+  "host": "cse341-lesson06-project.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"

@@ -20,23 +20,22 @@ PUT http://localhost/8080/users/6468e66637e6da8ae00dfff0
 DELETE http://localhost/8080/users/6468e66637e6da8ae00dfff0
 
 // PRODUCTION
-GET https://cse341-lesson05-project.onrender.com/pillows
+GET https://cse341-lesson06-project.onrender.com/pillows
 ###
-GET https://cse341-lesson05-project.onrender.com/pillows/6468e61237e6da8ae00dffed
+GET https://cse341-lesson06-project.onrender.com/pillows/6468e61237e6da8ae00dffed
 ###
-POST https://cse341-lesson05-project.onrender.com/pillows
+POST https://cse341-lesson06-project.onrender.com/pillows
 ###
-PUT https://cse341-lesson05-project.onrender.com/pillows/6468e61237e6da8ae00dffed
+PUT https://cse341-lesson06-project.onrender.com/pillows/6468e61237e6da8ae00dffed
 ###
-DELETE https://cse341-lesson05-project.onrender.com/pillows/6468e61237e6da8ae00dffed
+DELETE https://cse341-lesson06-project.onrender.com/pillows/6468e61237e6da8ae00dffed
 ###
-GET https://cse341-lesson05-project.onrender.com/users
+GET https://cse341-lesson06-project.onrender.com/users
 ###
-GET https://cse341-lesson05-project.onrender.com/users/6468e66637e6da8ae00dfff0
+GET https://cse341-lesson06-project.onrender.com/users/6468e66637e6da8ae00dfff0
 ###
-POST https://cse341-lesson05-project.onrender.com/users
+POST https://cse341-lesson06-project.onrender.com/users
 ###
-PUT https://cse341-lesson05-project.onrender.com/users/6468e66637e6da8ae00dfff0
+PUT https://cse341-lesson06-project.onrender.com/users/6468e66637e6da8ae00dfff0
 ###
-DELETE https://cse341-lesson05-project.onrender.com/users/6468e66637e6da8ae00dfff0
-
+DELETE https://cse341-lesson06-project.onrender.com/users/6468e66637e6da8ae00dfff0
