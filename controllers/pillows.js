@@ -8,12 +8,20 @@ const getPillows = async (req, res, next) => {
         .collection('pillows')
         .find();
     result.toArray().then((pillows) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(pillows);
+        try {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(pillows);
+        } catch (err) {
+            res.status(400).json({ message: err });
+        }
+
     });
 };
 
 const getPillow = async (req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({ error: "Invalid ObjectId" });
+    }
     const id = new ObjectId(req.params.id);
     const result = await mongodb
         .getDb()
@@ -21,8 +29,13 @@ const getPillow = async (req, res, next) => {
         .collection('pillows')
         .find({ _id: id });
     result.toArray().then((pillow) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(pillow[0]);
+        try {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(pillow[0]);
+        } catch (err) {
+            res.status(400).json({ message: err });
+        }
+
     });
 };
 
@@ -43,11 +56,14 @@ const postPillow = async (req, res, next) => {
     try {
         res.status(201).json(result);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 };
 
 const updatePillow = async (req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({ error: "Invalid ObjectId" });
+    }
     const id = new ObjectId(req.params.id);
     const result = await mongodb  
         .getDb()
@@ -55,19 +71,44 @@ const updatePillow = async (req, res, next) => {
         .collection('pillows')
         .updateOne(
             { _id: id },
-            { $set: { price: req.body.price, numInStock: req.body.numInStock }}
+            { $set: { 
+                title: req.body.title,
+                type: req.body.type,
+                size: req.body.size,
+                color: req.body.color,
+                price: req.body.price,
+                description: req.body.description,
+                numInStock: req.body.numInStock
+            }}
         );
-    res.status(204).json(result);
+    try {
+        res.status(204).json(result);
+    } catch (err) {
+        res.status(400).json({ message: err });
+    }
+    
 };
 
 const deletePillow = async (req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({ error: "Invalid ObjectId" });
+    }
     const id = new ObjectId(req.params.id);
     const result = await mongodb
         .getDb()
         .db('pillowShop')
         .collection('pillows')
         .deleteOne({ _id: id });
-    res.status(200).json(result);
+    try {
+        if (result["deletedCount"] == 0) {
+            res.status(400).json({ error: "No item found with that ObjectId" });
+            return;
+        }
+        res.status(200).json(result);
+    } catch (err) {
+        res.status(400).json({ message: err });
+    }
+    
 };
 
 module.exports = {

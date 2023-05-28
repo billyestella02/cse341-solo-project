@@ -8,12 +8,19 @@ const getUsers = async (req, res, next) => {
         .collection('users')
         .find();
     result.toArray().then((users) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(users);
+        try {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(users);
+        } catch (err) {
+            res.status(400).json({ message: err });
+        }
     });
 };
 
 const getUser = async (req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({ error: "Invalid ObjectId" });
+    }
     const id = new ObjectId(req.params.id);
     const result = await mongodb
         .getDb()
@@ -21,8 +28,12 @@ const getUser = async (req, res, next) => {
         .collection('users')
         .find({ _id: id });
     result.toArray().then((user) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(user[0]);
+        try {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(user[0]);
+        } catch (err) {
+            res.status(400).json({ message: err });
+        }
     });
 };
 
@@ -41,11 +52,14 @@ const postUser = async (req, res, next) => {
     try {
         res.status(201).json(result);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 };
 
 const updateUser = async (req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({ error: "Invalid ObjectId" });
+    }
     const id = new ObjectId(req.params.id);
     const result = await mongodb  
         .getDb()
@@ -53,19 +67,40 @@ const updateUser = async (req, res, next) => {
         .collection('users')
         .updateOne(
             { _id: id },
-            { $set: { email: req.body.email, birthday: req.body.birthday }}
+            { $set: {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                username: req.body.username, 
+                email: req.body.email, 
+                birthday: req.body.birthday 
+            }}
         );
-    res.status(204).json(result);
+    try {
+        res.status(204).json(result);
+    } catch (err) {
+        res.status(400).json({ message: err });
+    }
 };
 
 const deleteUser = async (req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({ error: "Invalid ObjectId" });
+    }
     const id = new ObjectId(req.params.id);
     const result = await mongodb
         .getDb()
         .db('pillowShop')
         .collection('users')
         .deleteOne({ _id: id });
-    res.status(200).json(result);
+    try {
+        if (result["deletedCount"] == 0) {
+            res.status(400).json({ error: "No user found with that ObjectId" });
+            return;
+        }
+        res.status(200).json(result);
+    } catch (err) {
+        res.status(400).json({ message: err });
+    }
 };
 
 module.exports = {
