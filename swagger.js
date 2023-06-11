@@ -5,7 +5,7 @@ const doc = {
         title: 'Project 01 API',
         description: 'API for my Pillow Shop Project'
     },
-    host: 'cse341-lesson07-project.onrender.com',
+    host: 'cse341-lesson08-project.onrender.com',
     schemes: ['https']
 };
 
